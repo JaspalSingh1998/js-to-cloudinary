@@ -47,13 +47,18 @@ p {
   margin: 30px 0px 58px 0;
   background: var(--bg-zone);
 }
-.prompt img {
-  margin-bottom: 20px;
+.dropzone__over {
+  border-style: solid;
+}
+.prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .thumb {
   max-width: 340px;
   height: 224px;
-  background-color: #4f4f4f;
+  background-color: #e2e2e2;
   border-radius: 12px;
   overflow: hidden;
   margin: 30px 0px 58px 0;

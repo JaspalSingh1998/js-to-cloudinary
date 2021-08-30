@@ -9,13 +9,6 @@
     />
 
     <link rel="icon" href="devchallenges.png" />
-
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="https://devchallenges.io/"
-    />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
       rel="stylesheet"
@@ -28,16 +21,34 @@
       <h2>Upload Your Image</h2>
       <p>File Should be Jpeg, png...</p>
       <div class="dropzone">
-        <div class="prompt">
-          <img src="./image.svg" alt="image svg" />
-          <p>Drag and Drop Your Image Here</p>
-        </div>
+        <span class="dropzone__prompt">
+          <img src="./image.svg" alt="omage Logo" />
+          <p>Drag and Drop File Here</p>
+        </span>
+        <input type="file" name="myFile" class="dropzone__input" id="file" />
       </div>
       <div class="thumb hidden"></div>
-      <div class="form-group">
-        <label for="file">Choose a file</label>
-        <input type="file" id="file" />
-      </div>
+      <label for="file">Choose a file</label>
     </div>
+    <div class="loading hidden">Loading</div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.11.4/cloudinary-core.min.js"
+      integrity="sha512-IbSnv7d3S0AhZSFfPStsTG9IfssskLtgsm2gbbTjmFM/ssHMIwwwRItZfGQKZYhwVXStAVT7nA+pdu0VTE01lA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./app.js"></script>
   </body>
 </html>
