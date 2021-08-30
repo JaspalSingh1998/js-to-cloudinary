@@ -40,6 +40,7 @@ const CLOUDINARY_UPLOAD_PRESET = "n8hb45ip";
 
 function uploadImage(thumbnailEl, file) {
   const linkbox = document.querySelector(".link");
+  const headline = document.querySelector("h2");
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
@@ -54,6 +55,7 @@ function uploadImage(thumbnailEl, file) {
     .then((res) => {
       imgUrl = res.data.secure_url;
       linkbox.value = res.data.secure_url;
+      headline.textContent = "Uploaded Successfully";
       thumbnailEl.style.background = `url('${imgUrl}')`;
       thumbnailEl.style.backgroundSize = "cover";
       thumbnailEl.style.backgroundPosition = "center";
@@ -66,6 +68,8 @@ function loading(thumbnailEl, status) {
   const loadingEl = document.querySelector(".loading");
   const card = document.querySelector(".card");
   document.querySelector("label").classList.add("hidden");
+  document.querySelector(".type").classList.add("hidden");
+  document.querySelector(".check").classList.remove("hidden");
   document.querySelector(".copy").style.display = "flex";
   if (status === true) {
     loadingEl.classList.remove("hidden");

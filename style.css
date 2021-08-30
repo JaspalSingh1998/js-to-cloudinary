@@ -1,5 +1,5 @@
 :root {
-  --bg-body: #fafafb;
+  --bg-body: #1010b433;
   --bg-white: #ffffff;
   --bg-zone: #f6f8fb;
   --accent: #2f80ed;
@@ -13,8 +13,7 @@
 }
 body {
   font-family: "Poppins", sans-serif;
-  /* background-color: var(--bg-body); */
-  background-color: cornflowerblue;
+  background-color: var(--bg-body);
   min-height: 100vh;
   display: grid;
   place-items: center;
@@ -95,6 +94,10 @@ label {
   background-color: var(--accent);
   border-radius: 8px;
   padding: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* ===================== */
