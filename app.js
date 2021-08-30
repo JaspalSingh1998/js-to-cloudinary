@@ -39,6 +39,7 @@ const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/codermj/upload";
 const CLOUDINARY_UPLOAD_PRESET = "n8hb45ip";
 
 function uploadImage(thumbnailEl, file) {
+  const linkbox = document.querySelector(".link");
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
@@ -52,16 +53,20 @@ function uploadImage(thumbnailEl, file) {
   })
     .then((res) => {
       imgUrl = res.data.secure_url;
+      linkbox.value = res.data.secure_url;
       thumbnailEl.style.background = `url('${imgUrl}')`;
       thumbnailEl.style.backgroundSize = "cover";
       thumbnailEl.style.backgroundPosition = "center";
       loading(thumbnailEl, false);
+      copyToClipboard(res.data.secure_url);
     })
     .catch((err) => console.log(err));
 }
 function loading(thumbnailEl, status) {
   const loadingEl = document.querySelector(".loading");
   const card = document.querySelector(".card");
+  document.querySelector("label").classList.add("hidden");
+  document.querySelector(".copy").style.display = "flex";
   if (status === true) {
     loadingEl.classList.remove("hidden");
     card.classList.add("hidden");
@@ -69,5 +74,19 @@ function loading(thumbnailEl, status) {
     loadingEl.classList.add("hidden");
     card.classList.remove("hidden");
     thumbnailEl.classList.remove("hidden");
+  }
+}
+
+function copyToClipboard(str) {
+  const copyBtn = document.querySelector(".copy-btn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      const el = document.createElement("textarea");
+      el.value = str;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+    });
   }
 }

@@ -54,6 +54,7 @@ var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/codermj/upload";
 var CLOUDINARY_UPLOAD_PRESET = "n8hb45ip";
 
 function uploadImage(thumbnailEl, file) {
+  var linkbox = document.querySelector(".link");
   var formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
@@ -65,10 +66,12 @@ function uploadImage(thumbnailEl, file) {
     data: formData
   }).then(function (res) {
     imgUrl = res.data.secure_url;
+    linkbox.value = res.data.secure_url;
     thumbnailEl.style.background = "url('".concat(imgUrl, "')");
     thumbnailEl.style.backgroundSize = "cover";
     thumbnailEl.style.backgroundPosition = "center";
     loading(thumbnailEl, false);
+    copyToClipboard(res.data.secure_url);
   })["catch"](function (err) {
     return console.log(err);
   });
@@ -77,6 +80,8 @@ function uploadImage(thumbnailEl, file) {
 function loading(thumbnailEl, status) {
   var loadingEl = document.querySelector(".loading");
   var card = document.querySelector(".card");
+  document.querySelector("label").classList.add("hidden");
+  document.querySelector(".copy").style.display = "flex";
 
   if (status === true) {
     loadingEl.classList.remove("hidden");
@@ -85,5 +90,20 @@ function loading(thumbnailEl, status) {
     loadingEl.classList.add("hidden");
     card.classList.remove("hidden");
     thumbnailEl.classList.remove("hidden");
+  }
+}
+
+function copyToClipboard(str) {
+  var copyBtn = document.querySelector(".copy-btn");
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      var el = document.createElement("textarea");
+      el.value = str;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+    });
   }
 }
