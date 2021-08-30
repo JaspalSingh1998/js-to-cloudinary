@@ -1,3 +1,5 @@
+[Demo](https://jaspalsingh1998.github.io/js-to-cloudinary/)
+
 ### Features
 
 1. Drag & Drop Image to upload
